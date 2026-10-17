@@ -41,7 +41,7 @@ function glyph(cx, cy, width, fill) {
 // Avatar — square canvas, full-bleed background, glyphs sized to sit well
 // inside the circle crop every platform applies.
 
-const AVATAR_GLYPH_WIDTH = 0.58; // of canvas width
+const AVATAR_GLYPH_WIDTH = 0.64; // of canvas width — same as src/logo.svg
 
 export const avatarVariants = ['red', 'gradient', 'dark'];
 
@@ -70,6 +70,16 @@ export function avatarSvg(variant) {
     `<rect width="${S}" height="${S}" fill="${bg}"/>` +
     glyph(S / 2, S / 2, S * AVATAR_GLYPH_WIDTH, ink) +
     `</svg>`
+  );
+}
+
+// Circle logo: the avatar cut to a circle, transparent outside.
+export function circleLogoSvg(variant) {
+  const S = 1000;
+  return (
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${S}" height="${S}" viewBox="0 0 ${S} ${S}">` +
+    `<defs><clipPath id="circle"><circle cx="${S / 2}" cy="${S / 2}" r="${S / 2}"/></clipPath></defs>` +
+    `<g clip-path="url(#circle)">${inner(avatarSvg(variant))}</g></svg>`
   );
 }
 

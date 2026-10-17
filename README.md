@@ -10,13 +10,22 @@ Logos, circle-safe avatars and platform banners, generated from SVG sources.
 |---|---|
 | <img src="./src/logo.svg" width="120"> | <img src="./src/logo-wide.svg" width="360"> |
 
-Sources: [src/logo.svg](./src/logo.svg), [src/logo-wide.svg](./src/logo-wide.svg) (same as elabins.com `public/`).
+- [src/logo.svg](./src/logo.svg): the square logo. The `e/` fills 64% of the tile, so it sits evenly next to other app-style icons.
+- [src/logo-wide.svg](./src/logo-wide.svg): the logo with wordmark (same as elabins.com `public/`).
+
+### Circle
+
+| red | gradient | dark |
+|---|---|---|
+| <img src="./dist/logo/circle/red.svg" width="120"> | <img src="./dist/logo/circle/gradient.svg" width="120"> | <img src="./dist/logo/circle/dark.svg" width="120"> |
+
+Transparent outside the circle. SVG plus 512 and 1024 px PNGs in [dist/logo/circle/](./dist/logo/circle/).
 PNG exports: [dist/logo/](./dist/logo/)
 
 ## Avatar
 
 Platforms crop profile pictures to a circle, which clips the rounded-square logo.
-The avatar fills the whole square and keeps the `e/` mark inside the circle.
+The avatar fills the whole square and keeps the `e/` mark (64% of the width, same as the square logo) inside the circle.
 
 | red (active) | gradient | dark |
 |---|---|---|

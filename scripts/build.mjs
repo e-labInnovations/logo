@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { brand } from '../brand.config.mjs';
 import { avatars, banners, logos } from '../platforms.config.mjs';
 import { toPng, outline } from './lib/render.mjs';
-import { avatarSvg, avatarCircleSvg, avatarVariants, bannerSvg } from './lib/templates.mjs';
+import { avatarSvg, avatarCircleSvg, avatarVariants, bannerSvg, circleLogoSvg } from './lib/templates.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -49,6 +49,13 @@ if (preview) {
     const svg = bannerSvg(b);
     write(`banner/${b.id}.png`, toPng(svg));
     write(`banner/svg/${b.id}.svg`, outline(svg));
+  }
+
+  // Circle logos, one per avatar variant.
+  for (const v of avatarVariants) {
+    write(`logo/circle/${v}.svg`, outline(circleLogoSvg(v)));
+    write(`logo/circle/${v}-512.png`, toPng(circleLogoSvg(v), 512));
+    write(`logo/circle/${v}-1024.png`, toPng(circleLogoSvg(v), 1024));
   }
 
   for (const l of logos.filter((l) => wanted(l.id)))
